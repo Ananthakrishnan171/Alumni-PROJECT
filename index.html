@@ -53,6 +53,18 @@
       font-size: 16px;
       line-height: 1.5;
       color: #555;
+      margin-bottom: 15px;
+    }
+    .gmail {
+      font-size: 14px;
+      color: #0066cc;
+    }
+    .gmail a {
+      text-decoration: none;
+      color: #0066cc;
+    }
+    .gmail a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -64,34 +76,39 @@
     <div class="name"></div>
     <div class="batch"></div>
     <div class="bio"></div>
+    <div class="gmail"></div>
   </div>
 
   <script>
-    // Nested array of alumni with images
+    // Nested array of alumni with Gmail
     const alumni = [
       {
         name: "Dr. A. Kumar",
         batch: "Batch of 2005",
         bio: "Renowned scientist in renewable energy with international awards.",
-        img: "IMG\\vi.jpg"
+        img: "IMG\\vi.jpg",
+        gmail: "kumar2005@gmail.com"
       },
       {
         name: "Ms. Priya R",
         batch: "Batch of 2010",
         bio: "Social entrepreneur empowering rural women with digital education.",
-        img: "IMG\\vis.jpg"
+        img: "IMG\\vis.jpg",
+        gmail: "priyar2010@gmail.com"
       },
       {
         name: "Mr. S. Arjun",
         batch: "Batch of 2012",
         bio: "Tech leader at a Fortune 500 company, AI innovation expert.",
-        img: "https://randomuser.me/api/portraits/men/32.jpg"
+        img: "https://randomuser.me/api/portraits/men/32.jpg",
+        gmail: "arjun2012@gmail.com"
       },
       {
         name: "Mrs. Lakshmi N",
         batch: "Batch of 2015",
         bio: "Award-winning author and motivational speaker.",
-        img: "https://randomuser.me/api/portraits/women/12.jpg"
+        img: "https://randomuser.me/api/portraits/women/12.jpg",
+        gmail: "lakshmin2015@gmail.com"
       }
     ];
 
@@ -100,6 +117,7 @@
     const nameEl = document.querySelector(".name");
     const batchEl = document.querySelector(".batch");
     const bioEl = document.querySelector(".bio");
+    const gmailEl = document.querySelector(".gmail");
 
     function showAlumni(index) {
       const person = alumni[index];
@@ -107,6 +125,7 @@
       nameEl.textContent = person.name;
       batchEl.textContent = person.batch;
       bioEl.textContent = person.bio;
+      gmailEl.innerHTML = `<a href="mailto:${person.gmail}">${person.gmail}</a>`;
     }
 
     // Show first alumni initially
