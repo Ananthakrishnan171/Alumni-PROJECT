@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alumni Achievers</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      text-align: center;
+      padding: 50px;
+    }
+    h2 {
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 20px;
+      width: 350px;
+      margin: auto;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      transition: transform 0.5s ease;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 4px solid #74ebd5;
+    }
+    .name {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #444;
+    }
+    .batch {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 15px;
+    }
+    .bio {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #555;
+      margin-bottom: 15px;
+    }
+    .gmail {
+      font-size: 14px;
+      color: #0066cc;
+    }
+    .gmail a {
+      text-decoration: none;
+      color: #0066cc;
+    }
+    .gmail a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Our Alumni Achievers</h2>
+  <div class="card" id="alumniCard">
+    <img src="" alt="Alumni Photo" class="image" id="alumniImage">
+    <div class="name"></div>
+    <div class="batch"></div>
+    <div class="bio"></div>
+    <div class="gmail"></div>
+  </div>
+
+  <script>
+    // Nested array of alumni with Gmail
+    const alumni = [
+      {
+        name: "Dr. A. Kumar",
+        batch: "Batch of 2005",
+        bio: "Renowned scientist in renewable energy with international awards.",
+        img: "IMG\\vi.jpg",
+        gmail: "kumar2005@gmail.com"
+      },
+      {
+        name: "Ms. Priya R",
+        batch: "Batch of 2010",
+        bio: "Social entrepreneur empowering rural women with digital education.",
+        img: "IMG\\vis.jpg",
+        gmail: "priyar2010@gmail.com"
+      },
+      {
+        name: "Mr. S. Arjun",
+        batch: "Batch of 2012",
+        bio: "Tech leader at a Fortune 500 company, AI innovation expert.",
+        img: "https://randomuser.me/api/portraits/men/32.jpg",
+        gmail: "arjun2012@gmail.com"
+      },
+      {
+        name: "Mrs. Lakshmi N",
+        batch: "Batch of 2015",
+        bio: "Award-winning author and motivational speaker.",
+        img: "https://randomuser.me/api/portraits/women/12.jpg",
+        gmail: "lakshmin2015@gmail.com"
+      }
+    ];
+
+    let currentIndex = 0;
+    const imageEl = document.getElementById("alumniImage");
+    const nameEl = document.querySelector(".name");
+    const batchEl = document.querySelector(".batch");
+    const bioEl = document.querySelector(".bio");
+    const gmailEl = document.querySelector(".gmail");
+
+    function showAlumni(index) {
+      const person = alumni[index];
+      imageEl.src = person.img;
+      nameEl.textContent = person.name;
+      batchEl.textContent = person.batch;
+      bioEl.textContent = person.bio;
+      gmailEl.innerHTML = `<a href="mailto:${person.gmail}">${person.gmail}</a>`;
+    }
+
+    // Show first alumni initially
+    showAlumni(currentIndex);
+
+    // Auto rotate every few seconds (demo = 10 sec)
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % alumni.length;
+      showAlumni(currentIndex);
+    }, 10000);
+  </script>
+
+</body>
+</html>
