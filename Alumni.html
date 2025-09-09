@@ -188,8 +188,8 @@
         name: "V.P.ARAVIND BHASKAR",
         batch: "Batch of 2015 - 2019",
         department: "Department of Electrical and Electronics Engineering",
-        position: "CEO of Paruvaththe Payir Sei",
-        bio: "QA Automation Engineer - Mphasis",
+        position: "QA Automation Engineer - Mphasis",
+        bio: "Specialist in test automation ensuring quality software delivery",
         img: "IMG/arv2.jpg",
         gmail: "aravindbkr@gmail.com"
       },
@@ -221,6 +221,12 @@
         gmail: "rohitvishnuk@gmail.com"
       }
     ];
+
+    // ✅ Preload all alumni images to avoid delay/flicker
+    alumni.forEach(person => {
+      const img = new Image();
+      img.src = person.img;
+    });
 
     let currentIndex = 0;
     let intervalId;
