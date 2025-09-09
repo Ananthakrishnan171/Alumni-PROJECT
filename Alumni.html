@@ -23,7 +23,7 @@
       background: #1f1f1f;
       border-radius: 15px;
       padding: 25px;
-      width: 350px;
+      width: 380px;
       margin: auto;
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
       transition: transform 0.5s ease;
@@ -33,12 +33,15 @@
       box-shadow: 0 0 25px rgba(0, 191, 255, 0.3);
     }
     .image {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;  
       margin-bottom: 15px;
       border: 3px solid #00bfff;
+      border-radius: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
     .name {
       font-size: 22px;
@@ -60,7 +63,7 @@
     .position {
       font-size: 15px;
       font-weight: bold;
-      color: #ffd700; /* Gold color for position */
+      color: #ffd700;
       margin-bottom: 15px;
     }
     .bio {
@@ -99,40 +102,67 @@
     // Alumni data
     const alumni = [
       {
-        name: "ER.M.RAJESH KANNAN ",
+        name: "ER.M.RAJESH KANNAN",
         batch: "Batch of 2015 - 2019",
         department: "Department of Electrical and Electronics Engineering",
         position: "CEO of Paruvaththe Payir Sei",
         bio: "Expert educator in IoT and Machine Learning with impactful contributions.",
-        img: "IMG\\vi.jpg",
+        img: "IMG/raj1.jpg",
         gmail: "info@paruvathepayirsei.in"
       },
       {
-        name: "V.PVARAVIND BHASKAR",
+        name: "V.P.ARAVIND BHASKAR",
         batch: "Batch of 2015 - 2019",
         department: "Department of Electrical and Electronics Engineering",
-        position: "CEO of Paruvaththe Payir Sei",
-        bio: "Specialist in IoT with a passion for teaching.",
-        img: "IMG\\ARV1.jpg",
-        gmail: "priyar2010@gmail.com"
+        position: "QA Automation Engineer - Mphasis",
+        bio: "Skilled QA Automation Engineer delivering reliable enterprise solutions.",
+        img: "IMG/arv2.jpg",
+        gmail: "aravindbkr@gmail.com"
       },
       {
-        name: "Mr. S. Arjun",
-        batch: "Batch of 2012",
-        department: "Department of Information Technology",
-        position: "AI Innovation Lead",
-        bio: "Tech leader at a Fortune 500 company, AI innovation expert.",
-        img: "https://randomuser.me/api/portraits/men/32.jpg",
-        gmail: "arjun2012@gmail.com"
+        name: "C.J.SIVA KRISHNAN",
+        batch: "Batch of 2012 - 2016",
+        department: "Department of Electronics and Communication Engineering",
+        position: "CEO of SIVAKRISHNA CONSTRUCTION",
+        bio: "Corporate head of SIVAKRISHNA Construction, transforming construction with expertise in welding and water pipeline projects.",
+        img: "IMG/siv1.jpg",
+        gmail: "sivakrishnan007@gmail.com"
       },
       {
-        name: "Mrs. Lakshmi N",
-        batch: "Batch of 2015",
-        department: "Department of English Literature",
-        position: "Author & Motivational Speaker",
-        bio: "Award-winning author and motivational speaker.",
-        img: "https://randomuser.me/api/portraits/women/12.jpg",
-        gmail: "lakshmin2015@gmail.com"
+        name: "C.J.THIRUMANI",
+        batch: "Batch of 2015 - 2019",
+        department: "Department of Mechanical Engineering",
+        position: "Employee - SEPC POWER PRIVATE LIMITED",
+        bio: "Skilled employee at SEPC Power Pvt. Ltd. with expertise in energy and infrastructure projects.",
+        img: "IMG/th5.jpg",
+        gmail: "cjthirumanimech07@gmail.com"
+      },
+      {
+        name: "C.J.RADHA KRISHNAN",
+        batch: "Batch of 2017 - 2021",
+        department: "Department of Mechanical Engineering",
+        position: "Team Leader - TriMed Technologies of India Pvt. Ltd.",
+        bio: "Team leader at TriMed Technologies, guiding projects with excellence and precision.",
+        img: "IMG/radha.jpg",
+        gmail: "cjradhakrishnan07@gmail.com"
+      },
+      {
+        name: "S.BALA VINOTH",
+        batch: "Batch of 2019 - 2022",
+        department: "Department of Mechanical Engineering",
+        position: "CEO of BALA VINOTH ENGINEERING.",
+        bio: "CEO of BALA VINOTH Engineering, specializing in industrial projects with expertise in designing and building high-performance boilers for factories and large-scale industries.",
+        img: "IMG/bala.jpg",
+        gmail: "balavinoth@gmail.com"
+      },
+      {
+        name: "C.R.RAJESH KANNAN",
+        batch: "Batch of 2019 - 2023",
+        department: "Department of Mechanical Engineering",
+        position: "CEO of RAY CONSTRUCTION",
+        bio: "Visionary CEO of RAY Construction, leading excellence in welding, water pipeline, and infrastructure projects.",
+        img: "IMG/rajesh.jpg",
+        gmail: "rajeshkannan8778@gmail.com"
       }
     ];
 
@@ -153,7 +183,8 @@
       deptEl.textContent = person.department;
       posEl.textContent = person.position;
       bioEl.textContent = person.bio;
-      gmailEl.innerHTML = `<a href="mailto:${person.gmail}">${person.gmail}</a>`;
+      // Open Gmail compose directly
+      gmailEl.innerHTML = `<a href="https://mail.google.com/mail/?view=cm&fs=1&to=${person.gmail}" target="_blank">${person.gmail}</a>`;
     }
 
     // Show first alumni initially
