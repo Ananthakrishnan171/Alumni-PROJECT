@@ -37,7 +37,7 @@
     .image {
       width: 200px;
       height: 200px;
-      object-fit: cover;  
+      object-fit: cover;
       margin-bottom: 15px;
       border: 3px solid #00bfff;
       border-radius: 10px;
@@ -62,15 +62,11 @@
       color: #00bfff;
       margin-bottom: 5px;
     }
-    /* Initially hidden */
-    .position,
-    .bio,
-    .gmail {
+    .position, .bio, .gmail {
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.6s ease;
     }
-    /* Reveal with pop effect on hover */
     .card:hover .position {
       opacity: 1;
       transform: translateY(0);
@@ -109,12 +105,56 @@
     .gmail a:hover {
       text-decoration: underline;
     }
+
+    /* Classic Arrow Buttons */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: none;
+      font-size: 22px;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(145deg, #00bfff, #009acd);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      /* Initially hidden */
+      opacity: 0;
+      visibility: hidden;
+    }
+    .card:hover .arrow {
+      opacity: 1;
+      visibility: visible;
+    }
+    .arrow:hover {
+      background: linear-gradient(145deg, #009acd, #0077b6);
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 6px 14px rgba(0, 191, 255, 0.6);
+    }
+    .left-arrow {
+      left: 10px;
+    }
+    .right-arrow {
+      right: 10px;
+    }
   </style>
 </head>
 <body>
 
   <h2>Our Alumni Achievers</h2>
   <div class="card" id="alumniCard">
+    <!-- Arrow buttons -->
+    <button class="arrow left-arrow" id="prevBtn">❮</button>
+    <button class="arrow right-arrow" id="nextBtn">❯</button>
+
     <img src="" alt="Alumni Photo" class="image" id="alumniImage">
     <div class="name"></div>
     <div class="batch"></div>
@@ -125,14 +165,13 @@
   </div>
 
   <script>
-    // Alumni data
     const alumni = [
       {
         name: "C.J.THIRUMANI",
         batch: "Batch of 2013 - 2017",
         department: "Department of Mechanical Engineering",
         position: "Manager - SEPC POWER PRIVATE LIMITED",
-        bio: "Skilled Manager at SEPC Power Pvt. Ltd. with expertise in energy and infrastructure projects.",
+        bio: "Skilled Manager at SEPC Power Pvt. Ltd. with expertise in energy and infrastructure projects",
         img: "IMG/th5.jpg",
         gmail: "cjthirumani07@gmail.com"
       },
@@ -141,7 +180,7 @@
         batch: "Batch of 2015 - 2019",
         department: "Department of Electrical and Electronics Engineering",
         position: "CEO of Paruvaththe Payir Sei",
-        bio: "Expert educator in IoT and Machine Learning with impactful contributions.",
+        bio: "Expert educator in IoT and Machine Learning with impactful contributions",
         img: "IMG/rkk1.jpg",
         gmail: "rajeshkannan2587@gmail.com"
       },
@@ -149,8 +188,8 @@
         name: "V.P.ARAVIND BHASKAR",
         batch: "Batch of 2015 - 2019",
         department: "Department of Electrical and Electronics Engineering",
-        position: "QA Automation Engineer - Mphasis.",
-        bio: "QA automation engineer ensuring software quality with advanced testing practices.",
+        position: "CEO of Paruvaththe Payir Sei",
+        bio: "QA Automation Engineer - Mphasis",
         img: "IMG/arv2.jpg",
         gmail: "aravindbkr@gmail.com"
       },
@@ -158,8 +197,8 @@
         name: "C.J.RADHA KRISHNAN",
         batch: "Batch of 2017 - 2021",
         department: "Department of Mechanical Engineering",
-        position: "Team Leader - TriMed Technologies of India Pvt. Ltd.",
-        bio: "Team leader at TriMed Technologies, guiding projects with excellence and precision.",
+        position: "Team Leader - TriMed Technologies of India Pvt. Ltd",
+        bio: "Team leader at TriMed Technologies, guiding projects with excellence and precision",
         img: "IMG/RK1.jpg",
         gmail: "cjradhakrish@gmail.com"
       },
@@ -167,8 +206,8 @@
         name: "S.BALA VINOTH",
         batch: "Batch of 2020 - 2022",
         department: "Department of Mechanical Engineering",
-        position: "CEO of BALA VINOTH ENGINEERING.",
-        bio: "Expert in industrial projects with strong focus on high-performance boiler systems for large-scale industries.",
+        position: "CEO of BALA VINOTH ENGINEERING",
+        bio: "Expert in industrial projects with strong focus on high-performance boiler systems for large-scale industries",
         img: "IMG/bv1.jpg",
         gmail: "balavinoths@gmail.com"
       },
@@ -177,10 +216,10 @@
         batch: "Batch of 2020 - 2024",
         department: "Department of Mechanical Engineering",
         position: "Executive Sales - Asian Paints",
-        bio: "Executive Sales at Asian Paints, excelling in client engagement and business growth.",
+        bio: "Executive Sales at Asian Paints, excelling in client engagement and business growth",
         img: "IMG/ro1.jpg",
-        gmail: "rohitvishnuk@gmail.com" 
-      } 
+        gmail: "rohitvishnuk@gmail.com"
+      }
     ];
 
     let currentIndex = 0;
@@ -213,16 +252,26 @@
     }
 
     function stopRotation() {
-      clearInterval(intervalId); 
+      clearInterval(intervalId);
     }
 
-    // Show first alumni initially
     showAlumni(currentIndex);
     startRotation();
 
-    // Pause on hover
     card.addEventListener("mouseenter", stopRotation);
     card.addEventListener("mouseleave", startRotation);
+
+    document.getElementById("prevBtn").addEventListener("click", () => {
+      stopRotation();
+      currentIndex = (currentIndex - 1 + alumni.length) % alumni.length;
+      showAlumni(currentIndex);
+    });
+
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      stopRotation();
+      currentIndex = (currentIndex + 1) % alumni.length;
+      showAlumni(currentIndex);
+    });
   </script>
 
 </body>
