@@ -23,7 +23,8 @@
       background: #1f1f1f;
       border-radius: 15px;
       padding: 25px;
-      width: 380px;
+      width: 90%;          /* Responsive width */
+      max-width: 380px;    /* Max width for laptops */
       margin: auto;
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
       transition: transform 0.5s ease, box-shadow 0.5s ease;
@@ -35,8 +36,9 @@
       box-shadow: 0 0 25px rgba(0, 191, 255, 0.3);
     }
     .image {
-      width: 200px;
-      height: 200px;
+      width: 100%;
+      max-width: 200px;
+      height: auto;
       object-fit: cover;
       margin-bottom: 15px;
       border: 3px solid #00bfff;
@@ -106,7 +108,7 @@
       text-decoration: underline;
     }
 
-    /* Classic Arrow Buttons */
+    /* Classic Circle Arrow Buttons */
     .arrow {
       position: absolute;
       top: 50%;
@@ -125,10 +127,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-
-      /* Initially hidden */
-      opacity: 0;
-      visibility: hidden;
+      opacity: 0;         /* Hidden initially */
+      visibility: hidden; /* Hidden initially */
     }
     .card:hover .arrow {
       opacity: 1;
@@ -144,6 +144,30 @@
     }
     .right-arrow {
       right: 10px;
+    }
+
+    /* 📱 Mobile screens */
+    @media (max-width: 600px) {
+      body {
+        padding: 20px;
+      }
+      h2 {
+        font-size: 22px;
+      }
+      .card {
+        padding: 15px;
+      }
+      .name {
+        font-size: 18px;
+      }
+      .batch, .department, .position, .bio, .gmail {
+        font-size: 13px;
+      }
+      .arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+      }
     }
   </style>
 </head>
@@ -168,8 +192,8 @@
     const alumni = [
       {
         name: "C.J.THIRUMANI",
-        batch: "Batch of 2013 - 2017",
-        department: "Department of Mechanical Engineering",
+        batch: "2013-2017",
+        department: "Mechanical Engineering",
         position: "Manager - SEPC POWER PRIVATE LIMITED",
         bio: "Skilled Manager at SEPC Power Pvt. Ltd. with expertise in energy and infrastructure projects",
         img: "IMG/th5.jpg",
@@ -177,44 +201,38 @@
       },
       {
         name: "ER.M.RAJESH KANNAN",
-        batch: "Batch of 2015 - 2019",
-        department: "Department of Electrical and Electronics Engineering",
-        position: "CEO of Paruvaththe Payir Sei",
-        bio: "Expert educator in IoT and Machine Learning with impactful contributions",
+        batch: "2015-2019", department: "Electrical & Electronics Engineering",
+        position: "CEO of Paruvaththe Payir Sei", bio: "Expert educator in IoT and Machine Learning with impactful contributions",
         img: "IMG/rkk1.jpg",
         gmail: "rajeshkannan2587@gmail.com"
       },
       {
         name: "V.P.ARAVIND BHASKAR",
-        batch: "Batch of 2015 - 2019",
-        department: "Department of Electrical and Electronics Engineering",
+        batch: "2015-2019", department: "Electrical & Electronics Engineering",
         position: "QA Automation Engineer - Mphasis",
-        bio: "Specialist in test automation ensuring quality software delivery",
+        bio: "QA automation engineer ensuring software quality with advanced testing practices",
         img: "IMG/arv2.jpg",
         gmail: "aravindbkr@gmail.com"
       },
       {
-        name: "C.J.RADHA KRISHNAN",
-        batch: "Batch of 2017 - 2021",
-        department: "Department of Mechanical Engineering",
+        name: "C.J.RADHA KRISHNAN", batch: "2017-2021", department: "Mechanical Engineering",
         position: "Team Leader - TriMed Technologies of India Pvt. Ltd",
         bio: "Team leader at TriMed Technologies, guiding projects with excellence and precision",
         img: "IMG/RK1.jpg",
         gmail: "cjradhakrish@gmail.com"
       },
-      {
-        name: "S.BALA VINOTH",
-        batch: "Batch of 2020 - 2022",
-        department: "Department of Mechanical Engineering",
-        position: "CEO of BALA VINOTH ENGINEERING",
-        bio: "Expert in industrial projects with strong focus on high-performance boiler systems for large-scale industries",
-        img: "IMG/bv1.jpg",
-        gmail: "balavinoths@gmail.com"
+      { name: "S.BALA VINOTH",
+      batch: "2020-2022",
+      department: "Mechanical Engineering",
+      position: "CEO of BALA VINOTH ENGINEERING",
+      bio: "Expert in industrial projects with strong focus on high-performance boiler systems for large-scale industries",
+      img: "IMG/bv1.jpg",
+      gmail: "balavinoths@gmail.com"
       },
       {
         name: "K.ROHIT KUMAR",
-        batch: "Batch of 2020 - 2024",
-        department: "Department of Mechanical Engineering",
+        batch: "2020-2024",
+        department: "Mechanical Engineering",
         position: "Executive Sales - Asian Paints",
         bio: "Executive Sales at Asian Paints, excelling in client engagement and business growth",
         img: "IMG/ro1.jpg",
@@ -222,7 +240,7 @@
       }
     ];
 
-    // ✅ Preload all alumni images to avoid delay/flicker
+    // Preload all images to prevent delay
     alumni.forEach(person => {
       const img = new Image();
       img.src = person.img;
