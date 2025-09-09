@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #121212; /* Dark background */
+      background: #121212;
       color: #fff;
       text-align: center;
       padding: 50px;
@@ -15,12 +15,12 @@
     h2 {
       font-size: 28px;
       margin-bottom: 30px;
-      color: #00bfff; /* Blue heading */
+      color: #00bfff;
       text-transform: uppercase;
       letter-spacing: 2px;
     }
     .card {
-      background: #1f1f1f; /* Dark card background */
+      background: #1f1f1f;
       border-radius: 15px;
       padding: 25px;
       width: 350px;
@@ -30,7 +30,7 @@
     }
     .card:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(0, 191, 255, 0.3); /* Glow effect */
+      box-shadow: 0 0 25px rgba(0, 191, 255, 0.3);
     }
     .image {
       width: 120px;
@@ -38,7 +38,7 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 15px;
-      border: 3px solid #00bfff; /* Blue border */
+      border: 3px solid #00bfff;
     }
     .name {
       font-size: 22px;
@@ -54,7 +54,13 @@
     .department {
       font-size: 14px;
       font-style: italic;
-      color: #00bfff; /* Highlight department in blue */
+      color: #00bfff;
+      margin-bottom: 5px;
+    }
+    .position {
+      font-size: 15px;
+      font-weight: bold;
+      color: #ffd700; /* Gold color for position */
       margin-bottom: 15px;
     }
     .bio {
@@ -84,6 +90,7 @@
     <div class="name"></div>
     <div class="batch"></div>
     <div class="department"></div>
+    <div class="position"></div>
     <div class="bio"></div>
     <div class="gmail"></div>
   </div>
@@ -92,25 +99,28 @@
     // Alumni data
     const alumni = [
       {
-        name: "Dr. A. Kumar",
-        batch: "Batch of 2005",
-        department: "Department of Mechanical Engineering",
-        bio: "Renowned scientist in renewable energy with international awards.",
+        name: "ER.M.RAJESH KANNAN ",
+        batch: "Batch of 2015 - 2019",
+        department: "Department of Electrical and Electronics Engineering",
+        position: "CEO of Paruvaththe Payir Sei",
+        bio: "Expert educator in IoT and Machine Learning with impactful contributions.",
         img: "IMG\\vi.jpg",
-        gmail: "kumar2005@gmail.com"
+        gmail: "info@paruvathepayirsei.in"
       },
       {
-        name: "Ms. Priya R",
-        batch: "Batch of 2010",
-        department: "Department of Computer Science",
-        bio: "Social entrepreneur empowering rural women with digital education.",
-        img: "IMG\\vis.jpg",
+        name: "V.PVARAVIND BHASKAR",
+        batch: "Batch of 2015 - 2019",
+        department: "Department of Electrical and Electronics Engineering",
+        position: "CEO of Paruvaththe Payir Sei",
+        bio: "Specialist in IoT with a passion for teaching.",
+        img: "IMG\\ARV1.jpg",
         gmail: "priyar2010@gmail.com"
       },
       {
         name: "Mr. S. Arjun",
         batch: "Batch of 2012",
         department: "Department of Information Technology",
+        position: "AI Innovation Lead",
         bio: "Tech leader at a Fortune 500 company, AI innovation expert.",
         img: "https://randomuser.me/api/portraits/men/32.jpg",
         gmail: "arjun2012@gmail.com"
@@ -119,6 +129,7 @@
         name: "Mrs. Lakshmi N",
         batch: "Batch of 2015",
         department: "Department of English Literature",
+        position: "Author & Motivational Speaker",
         bio: "Award-winning author and motivational speaker.",
         img: "https://randomuser.me/api/portraits/women/12.jpg",
         gmail: "lakshmin2015@gmail.com"
@@ -130,6 +141,7 @@
     const nameEl = document.querySelector(".name");
     const batchEl = document.querySelector(".batch");
     const deptEl = document.querySelector(".department");
+    const posEl = document.querySelector(".position");
     const bioEl = document.querySelector(".bio");
     const gmailEl = document.querySelector(".gmail");
 
@@ -139,6 +151,7 @@
       nameEl.textContent = person.name;
       batchEl.textContent = person.batch;
       deptEl.textContent = person.department;
+      posEl.textContent = person.position;
       bioEl.textContent = person.bio;
       gmailEl.innerHTML = `<a href="mailto:${person.gmail}">${person.gmail}</a>`;
     }
