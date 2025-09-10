@@ -145,6 +145,15 @@
     .right-arrow {
       right: 10px;
     }
+
+    /* Fade animation */
+    .fade {
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+    .fade.show {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -155,13 +164,13 @@
     <button class="arrow left-arrow" id="prevBtn">❮</button>
     <button class="arrow right-arrow" id="nextBtn">❯</button>
 
-    <img src="" alt="Alumni Photo" class="image" id="alumniImage">
-    <div class="name"></div>
-    <div class="batch"></div>
-    <div class="department"></div>
-    <div class="position"></div>
-    <div class="bio"></div>
-    <div class="gmail"></div>
+    <img src="" alt="Alumni Photo" class="image fade" id="alumniImage">
+    <div class="name fade"></div>
+    <div class="batch fade"></div>
+    <div class="department fade"></div>
+    <div class="position fade"></div>
+    <div class="bio fade"></div>
+    <div class="gmail fade"></div>
   </div>
 
   <script>
@@ -189,10 +198,11 @@
         batch: "Batch of 2015 - 2019",
         department: "Department of Electrical and Electronics Engineering",
         position: "CEO of Paruvaththe Payir Sei",
-        bio: "Renowned Mentor in IoT and AI-driven technologies shaping young minds ",
+        bio: "Renowned Mentor in IoT and AI-driven technologies shaping young minds",
         img: "IMG/arv2.jpg",
         gmail: "aravindbkr@gmail.com"
       },
+
       {
         name: "C.J.RADHA KRISHNAN",
         batch: "Batch of 2017 - 2021",
@@ -222,7 +232,7 @@
       }
     ];
 
-    // ✅ Preload all alumni images to avoid delay/flicker
+    // Preload all images
     alumni.forEach(person => {
       const img = new Image();
       img.src = person.img;
@@ -238,16 +248,23 @@
     const posEl = document.querySelector(".position");
     const bioEl = document.querySelector(".bio");
     const gmailEl = document.querySelector(".gmail");
+    const fadeElements = [imageEl, nameEl, batchEl, deptEl, posEl, bioEl, gmailEl];
 
     function showAlumni(index) {
-      const person = alumni[index];
-      imageEl.src = person.img;
-      nameEl.textContent = person.name;
-      batchEl.textContent = person.batch;
-      deptEl.textContent = person.department;
-      posEl.textContent = person.position;
-      bioEl.textContent = person.bio;
-      gmailEl.innerHTML = `<a href="https://mail.google.com/mail/?view=cm&fs=1&to=${person.gmail}" target="_blank">${person.gmail}</a>`;
+      fadeElements.forEach(el => el.classList.remove("show"));
+
+      setTimeout(() => {
+        const person = alumni[index];
+        imageEl.src = person.img;
+        nameEl.textContent = person.name;
+        batchEl.textContent = person.batch;
+        deptEl.textContent = person.department;
+        posEl.textContent = person.position;
+        bioEl.textContent = person.bio;
+        gmailEl.innerHTML = `<a href="https://mail.google.com/mail/?view=cm&fs=1&to=${person.gmail}" target="_blank">${person.gmail}</a>`;
+
+        fadeElements.forEach(el => el.classList.add("show"));
+      }, 400); // fade-out duration
     }
 
     function startRotation() {
