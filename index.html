@@ -12,20 +12,34 @@
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #121212;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      overflow: hidden;
     }
     .container {
-      background: #1f1f1f;
+      background: rgba(31, 31, 31, 0.95);
       padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(0, 191, 255, 0.2);
       width: 100%;
       max-width: 400px;
+      transform: translateY(-50px);
+      opacity: 0;
+      animation: slideFadeIn 1s ease forwards;
+    }
+    @keyframes slideFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
     .signup-form {
       display: flex;
@@ -35,6 +49,12 @@
       text-align: center;
       margin-bottom: 20px;
       color: #00bfff;
+      letter-spacing: 1px;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
     .signup-form input {
       padding: 12px;
@@ -43,9 +63,15 @@
       border-radius: 5px;
       background: #2a2a2a;
       color: #fff;
+      transition: all 0.3s ease;
     }
     .signup-form input::placeholder {
       color: #aaa;
+    }
+    .signup-form input:focus {
+      outline: none;
+      box-shadow: 0 0 10px #00bfff;
+      transform: scale(1.03);
     }
     .signup-form button {
       padding: 12px;
@@ -55,10 +81,12 @@
       border-radius: 5px;
       cursor: pointer;
       font-weight: bold;
-      transition: background 0.3s ease;
+      transition: all 0.3s ease;
     }
     .signup-form button:hover {
       background: #009fd6;
+      transform: scale(1.05);
+      box-shadow: 0 0 12px #00bfff;
     }
     .signup-form p {
       margin-top: 10px;
@@ -76,6 +104,9 @@
       text-align: center;
       margin-top: 15px;
       font-weight: normal;
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards;
+      animation-delay: 0.8s;
     }
   </style>
 </head>
@@ -90,23 +121,19 @@
       <br>
       <button type="submit">LOGIN</button>
     </form>
-    
   </div>
 
   <script>
     function validateForm(event) {
       event.preventDefault(); // Stop normal form submission
       
-      // Get values
       const username = document.getElementById("username").value.trim();
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value.trim();
 
       if (username && email && password) {
-        // All fields filled → redirect
         window.location.href = "Alumni.html";
       } else {
-        // Validation failed
         alert("Please fill all fields before login.");
       }
     }
